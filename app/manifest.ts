@@ -15,3 +15,4 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: SITE_URL,
   };
 }
+

@@ -18,6 +18,11 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hasHash, setHasHash] = useState(false);
+  const [clientPath, setClientPath] = useState<string | null>(null);
+
+  useEffect(() => {
+    setClientPath(window.location.pathname);
+  }, []);
 
   useEffect(() => {
     const updateHash = () => setHasHash(!!window.location.hash);
@@ -32,7 +37,8 @@ export function Header() {
     };
   }, []);
 
-  const isHome = pathname === "/";
+  const resolvedPath = clientPath ?? pathname ?? "";
+  const isHome = resolvedPath === "/" || resolvedPath === "";
   const isLight = scrolled || !isHome || hasHash;
 
   const linkClass = (href: string) => {
@@ -99,7 +105,7 @@ export function Header() {
           {navContent}
         </Container>
       ) : (
-        <div className="mx-auto max-w-7xl rounded-full bg-black/25 backdrop-blur-xl border border-white/20 flex h-14 md:h-16 items-center justify-between gap-4 px-5 md:px-8 py-2 shadow-lg shadow-black/10">
+        <div className="mx-auto max-w-6xl rounded-full bg-black/25 backdrop-blur-xl border border-white/20 flex h-14 md:h-16 items-center justify-between gap-4 px-5 md:px-8 py-2 shadow-lg shadow-black/10">
           {navContent}
         </div>
       )}
