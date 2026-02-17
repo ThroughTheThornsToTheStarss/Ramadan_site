@@ -17,9 +17,10 @@ export const metadata: Metadata = {
 
 export default function LessonsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[var(--bg-page-alt)]">
       <Lessons />
     </div>
   );
 }
+
 

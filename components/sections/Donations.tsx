@@ -166,7 +166,7 @@ export function Donations() {
           </div>
 
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-[var(--border-light)] shadow-[0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)] min-h-[220px] sm:min-h-[200px]">
+            <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-[var(--border-light)] shadow-[0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)] min-h-[280px] sm:min-h-[260px]">
               {PROJECTS.map((project, i) => {
                 const Icon = project.icon;
                 return (
@@ -179,29 +179,28 @@ export function Donations() {
                     }}
                     aria-hidden={i !== index}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-6 px-8 py-10 md:px-12 md:py-12 relative z-0">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-6 px-8 pt-10 pb-12 md:px-12 md:pt-12 md:pb-14 relative z-0">
                       <div
-                        className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-primary"
+                        className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-primary shadow-[0 2px 8px rgba(42, 157, 143, 0.15)]"
                         style={{
                           background: "linear-gradient(135deg, var(--primary-light) 0%, var(--primary-light-2) 100%)",
-                          boxShadow: "0 2px 8px rgba(42, 157, 143, 0.15)",
                         }}
                         aria-hidden
                       >
                         <Icon className="w-8 h-8" strokeWidth={1.6} />
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-heading)] mb-3">
+                      <div className="min-w-0 flex-1 flex flex-col">
+                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-heading)] mb-2">
                           {project.title}
                         </h3>
-                        <p className="text-[var(--text-muted)] text-[var(--text-body)] leading-relaxed mb-6">
+                        <p className="text-[var(--text-muted)] text-[var(--text-body)] leading-relaxed mb-5 flex-1">
                           {project.description}
                         </p>
                         <a
                           href={DONATE_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-[gap] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md py-1"
+                          className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-[gap] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md py-2 -mb-1"
                         >
                           Подробнее на mechet-ramazan.ru
                           <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2} />
@@ -232,7 +231,7 @@ export function Donations() {
                   <ChevronRight className="w-5 h-5" strokeWidth={2} />
                 </button>
 
-                <div className="flex justify-center gap-2.5 mt-8">
+                <div className="flex justify-center gap-2.5 mt-10">
                   {PROJECTS.map((_, i) => (
                     <button
                       key={i}
@@ -257,4 +256,5 @@ export function Donations() {
     </section>
   );
 }
+
 

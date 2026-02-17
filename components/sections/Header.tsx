@@ -21,8 +21,8 @@ export function Header() {
   const [clientPath, setClientPath] = useState<string | null>(null);
 
   useEffect(() => {
-    setClientPath(window.location.pathname);
-  }, []);
+    setClientPath(pathname ?? (typeof window !== "undefined" ? window.location.pathname : ""));
+  }, [pathname]);
 
   useEffect(() => {
     const updateHash = () => setHasHash(!!window.location.hash);
@@ -79,12 +79,12 @@ export function Header() {
           }`}
         />
         <span
-          className={`block w-6 h-0.5 rounded-full transition-colors ${
+          className={`block w-7 h-0.5 rounded-full transition-colors ${
             isLight ? "bg-[var(--text-dark)]" : "bg-white"
           }`}
         />
         <span
-          className={`block w-6 h-0.5 rounded-full transition-colors ${
+          className={`block w-7 h-0.5 rounded-full transition-colors ${
             isLight ? "bg-[var(--text-dark)]" : "bg-white"
           }`}
         />
