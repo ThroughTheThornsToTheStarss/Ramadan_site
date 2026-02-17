@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors - from reference */
+  --bg: #ffffff;
+  --bg-page: #ffffff;
+  --bg-page-alt: #f8f9fa;
+  --primary: #2a9d8f;
+  --primary-hover: #238276;
+  --primary-light: #e0f2f1;
+  --primary-light-2: #e6f6f3;
+  --text-dark: #1f2937;
+  --text-heading: #111827;
+  --text-muted: #4b5563;
+  --text-muted-2: #6b7280;
+  --border-light: #e5e7eb;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --info-bg: #fffbeb;
+  --info-icon-bg: #fbd38d;
+  --card-bg-light: #f8fcfb;
+  --section-alt: #f0f9f8;
+  --footer-bg: #0f172a;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-px: 1.5rem;
+  --section-py: 5rem;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --text-h1: 3rem;
+  --text-h1-lg: 3.5rem;
+  --text-h2: 2.25rem;
+  --text-h3: 1.5rem;
+  --text-body: 1.125rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Components */
+  --radius-logo: 0.5rem;
+  --radius-button: 0.5rem;
+  --radius-card: 1.5rem;
+  --radius-card-sm: 0.75rem;
+  --radius-full: 9999px;
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-card-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-toggle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-px: 2rem;
+    --section-py: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-px: 2.5rem;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-[var(--text-dark)] bg-[var(--bg-page)];
+    font-size: var(--text-body);
+    line-height: var(--leading-relaxed);
+  }
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
