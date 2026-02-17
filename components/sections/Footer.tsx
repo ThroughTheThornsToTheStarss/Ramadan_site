@@ -46,7 +46,7 @@ export function Footer() {
                   className="flex items-center gap-2 text-white/80 text-sm hover:text-white transition-colors"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-primary" />
-                  +7 (937) 598-65-03
+                  +7 927-249-47-52
                 </a>
               </div>
             </div>

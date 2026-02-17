@@ -10,7 +10,7 @@ export function StructuredData() {
     description:
       "Мечеть Рамазан в Казани — место духовного единства и познания. Ежедневные намазы, уроки, никах, пожертвования.",
     url: SITE_URL,
-    telephone: ["+7 (843) 260-03-13", "+7 (937) 598-65-03"],
+    telephone: ["+7 (843) 260-03-13", "+7 927 249 4752"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Окольная ул., 25Б",
@@ -64,5 +64,6 @@ export function StructuredData() {
     />
   );
 }
+
 
 

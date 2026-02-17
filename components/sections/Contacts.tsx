@@ -55,7 +55,7 @@ export function Contacts() {
                     +7 (843) 260-03-13
                   </a>
                   <a href="tel:+79375986503" className="block hover:text-primary transition-colors">
-                    +7 (937) 598-65-03
+                    +7 927-249-47-52
                   </a>
                 </p>
               </div>
