@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { Sun, Cloud, Moon } from "lucide-react";
 
 const PRAYER_KEYS = [
@@ -58,14 +59,20 @@ export function PrayerSchedule() {
   return (
     <section id="prayer" className="bg-[var(--section-alt)] py-[var(--section-py)]" aria-labelledby="prayer-title">
       <Container>
-        <h2 id="prayer-title" className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-heading)] text-center mb-3">
-          Расписание намазов
-        </h2>
-        <p className="text-lg md:text-xl text-[var(--text-muted)] text-center mb-8">
-          Актуальное время намазов на сегодня и завтра
-        </p>
+        <Reveal>
+          <div className="text-center mb-10">
+            <p className="text-primary font-semibold text-xs uppercase tracking-[0.2em] mb-2">
+              Намаз
+            </p>
+            <h2 id="prayer-title" className="font-heading heading-accent text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-heading)] mb-3">
+              Расписание намазов
+            </h2>
+            <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-xl mx-auto">
+              Актуальное время намазов на сегодня и завтра
+            </p>
+          </div>
 
-        <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-10">
           <div className="inline-flex p-1 rounded-full bg-[var(--border-light)] shadow-sm" role="group" aria-label="Выбор дня">
             <button
               type="button"
@@ -94,24 +101,24 @@ export function PrayerSchedule() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 mb-12">
-          {prayers.map(({ name, time, icon: Icon }) => (
-            <div
-              key={name}
-              className="rounded-xl bg-white border border-[var(--border-light)] p-6 shadow-[var(--shadow-card)] flex flex-col items-center text-center"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--primary-light)] text-primary mb-4" aria-hidden>
-                <Icon className="h-6 w-6" strokeWidth={2} />
-              </span>
-              <p className="text-[var(--text-dark)] text-lg font-normal mb-1">
-                {name}
-              </p>
-              <p className="text-primary text-2xl font-bold tabular-nums">{time}</p>
-            </div>
-          ))}
-        </div>
+          <div key={isToday ? "today" : "tomorrow"} className="animate-prayer-in grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 mb-12">
+            {prayers.map(({ name, time, icon: Icon }) => (
+              <div
+                key={name}
+                className="rounded-[var(--radius-card)] bg-white border border-[var(--border-light)] p-6 shadow-card card-hover flex flex-col items-center text-center"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--primary-light)] text-primary mb-4" aria-hidden>
+                  <Icon className="h-6 w-6" strokeWidth={2} />
+                </span>
+                <p className="text-[var(--text-dark)] text-lg font-normal mb-1">
+                  {name}
+                </p>
+                <p className="text-primary text-2xl font-bold tabular-nums">{time}</p>
+              </div>
+            ))}
+          </div>
 
-        <div className="rounded-lg border border-amber-200 bg-[var(--info-bg)] p-5 flex gap-4 items-start max-w-3xl mx-auto">
+          <div className="rounded-lg border border-amber-200 bg-[var(--info-bg)] p-5 flex gap-4 items-start max-w-3xl mx-auto">
           <span
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--info-icon-bg)] text-[var(--text-heading)]"
             aria-hidden
@@ -125,8 +132,9 @@ export function PrayerSchedule() {
             <p className="text-[var(--text-muted-2)] text-base">
               Намаз читают через 5–10 минут после захода намаза
             </p>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function CrescentIcon({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -16,7 +18,7 @@ function CrescentIcon({ className = "" }: { className?: string }) {
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a
+    <Link
       href="/"
       className={`inline-flex items-center gap-3 no-underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded ${className}`}
       aria-label="Рамазан — на главную"
@@ -30,14 +32,14 @@ export function Logo({ className = "" }: { className?: string }) {
       <span className="text-xl font-semibold text-white whitespace-nowrap">
         Рамазан
       </span>
-    </a>
+    </Link>
   );
 }
 
 /** Logo for light background (header on white) */
 export function LogoDark({ className = "" }: { className?: string }) {
   return (
-    <a
+    <Link
       href="/"
       className={`inline-flex items-center gap-3 no-underline text-[var(--text-dark)] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded ${className}`}
       aria-label="Рамазан — на главную"
@@ -49,6 +51,6 @@ export function LogoDark({ className = "" }: { className?: string }) {
         <CrescentIcon className="h-6 w-6" />
       </span>
       <span className="text-xl font-semibold whitespace-nowrap">Рамазан</span>
-    </a>
+    </Link>
   );
 }

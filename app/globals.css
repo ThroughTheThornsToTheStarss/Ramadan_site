@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  /* Colors - from reference */
+  /* Colors */
   --bg: #ffffff;
   --bg-page: #ffffff;
-  --bg-page-alt: #f8f9fa;
+  --bg-page-alt: #f8fafb;
   --primary: #2a9d8f;
   --primary-hover: #238276;
   --primary-light: #e0f2f1;
@@ -41,15 +41,24 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.75;
 
+  /* Motion (respect prefers-reduced-motion) */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
   /* Components */
   --radius-logo: 0.5rem;
   --radius-button: 0.5rem;
-  --radius-card: 1.5rem;
+  --radius-card: 1.25rem;
   --radius-card-sm: 0.75rem;
   --radius-full: 9999px;
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-card-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.06);
+  --shadow-card-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
   --shadow-toggle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --focus-ring: 2px solid var(--primary);
+  --focus-offset: 2px;
 }
 
 @media (min-width: 768px) {
@@ -65,6 +74,14 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -72,11 +89,119 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply text-[var(--text-dark)] bg-[var(--bg-page)];
     font-size: var(--text-body);
     line-height: var(--leading-relaxed);
   }
   [id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 5.5rem;
+  }
+  /* Focus visible — world-class a11y */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+    border-radius: 0.25rem;
+  }
+}
+
+/* Reveal animation: section enters from below with fade */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* Card hover: lift + shadow */
+.card-hover {
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Button hover: slight lift */
+.btn-hover {
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+.btn-hover:hover {
+  transform: translateY(-2px);
+}
+.btn-hover:active {
+  transform: translateY(0);
+}
+
+/* Hero overlay subtle pulse */
+@keyframes overlay-pulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+.animate-overlay-pulse {
+  animation: overlay-pulse 8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-overlay-pulse,
+  .animate-prayer-in { animation: none; }
+}
+
+/* Prayer times switch animation */
+@keyframes pray-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-prayer-in {
+  animation: pray-in 0.35s var(--ease-out) forwards;
+}
+
+/* Section heading accent line */
+.heading-accent {
+  position: relative;
+}
+.heading-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25em;
+  width: 2.5rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .reveal.is-visible { transform: none; }
+  .card-hover:hover { transform: none; }
+  .btn-hover:hover { transform: none; }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
   }
 }

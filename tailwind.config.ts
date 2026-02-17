@@ -21,6 +21,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         container: "var(--container-max)",
@@ -32,7 +33,11 @@ const config: Config = {
       },
       boxShadow: {
         card: "var(--shadow-card)",
+        "card-hover": "var(--shadow-card-hover)",
         "card-soft": "var(--shadow-card-soft)",
+      },
+      transitionDuration: {
+        smooth: "var(--duration-normal)",
       },
     },
   },

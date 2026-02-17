@@ -4,17 +4,20 @@ import { Logo } from "@/components/ui/Logo";
 import { MapPin, Phone } from "lucide-react";
 
 const NAV_LINKS = [
-  { href: "#about", label: "О мечети" },
-  { href: "#prayer", label: "Расписание намазов" },
-  { href: "#lessons", label: "Уроки" },
-  { href: "#contacts", label: "Контакты" },
+  { href: "/#about", label: "О мечети" },
+  { href: "/#prayer", label: "Расписание намазов" },
+  { href: "/ramadan", label: "Рамадан" },
+  { href: "/lessons", label: "Образовательные программы" },
+  { href: "/nikah", label: "Никах" },
+  { href: "/podderzhka", label: "Поддержка" },
+  { href: "/#contacts", label: "Контакты" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--footer-bg)] text-white">
+    <footer className="bg-[var(--footer-bg)] text-white" role="contentinfo">
       <div className="border-t border-white/10">
-        <Container className="py-12 md:py-14">
+        <Container className="py-14 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
             <div className="md:col-span-5">
               <Logo />
@@ -37,6 +40,13 @@ export function Footer() {
                 >
                   <Phone className="h-4 w-4 shrink-0 text-primary" />
                   +7 (843) 260-03-13
+                </a>
+                <a
+                  href="tel:+79375986503"
+                  className="flex items-center gap-2 text-white/80 text-sm hover:text-white transition-colors"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />
+                  +7 (937) 598-65-03
                 </a>
               </div>
             </div>
