@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { Phone } from "lucide-react";
 
 const VK_NIKAH_URL = "https://vk.com/nikah_kazan?w=club154918106";
-const PHONE = "+7 927-249-47-52";
+const PHONE = "+7 (927) 249-47-52";
 
 const VERSES = [
   {

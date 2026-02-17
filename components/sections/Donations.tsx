@@ -66,7 +66,7 @@ export function Donations() {
   return (
     <section
       id="donations"
-      className="relative min-h-screen py-24 md:py-32 overflow-hidden"
+      className="relative min-h-screen py-24 md:py-32 overflow-visible"
     >
       {/* Layered background — depth and warmth */}
       <div
@@ -148,7 +148,7 @@ export function Donations() {
 
         {/* Projects — elevated panel */}
         <Reveal>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto pb-4 sm:pb-0">
           <div className="flex items-center gap-5 mb-10">
             <span
               className="h-0.5 flex-1 max-w-[80px] rounded-full"
@@ -165,8 +165,8 @@ export function Donations() {
             />
           </div>
 
-          <div className="relative">
-            <div className="relative overflow-visible sm:overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-[var(--border-light)] shadow-[0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)] min-h-[320px] sm:min-h-[260px]">
+          <div className="relative overflow-visible">
+            <div className="relative rounded-2xl bg-white/95 backdrop-blur-sm border border-[var(--border-light)] shadow-[0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)] min-h-[360px] sm:min-h-[260px] overflow-hidden sm:overflow-hidden">
               {PROJECTS.map((project, i) => {
                 const Icon = project.icon;
                 return (
@@ -179,7 +179,7 @@ export function Donations() {
                     }}
                     aria-hidden={i !== index}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-6 px-8 pt-10 pb-16 sm:pb-12 md:px-12 md:pt-12 md:pb-14 relative z-0">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-6 px-8 pt-10 pb-24 sm:pb-12 md:px-12 md:pt-12 md:pb-14 relative z-0 min-h-full">
                       <div
                         className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-primary shadow-[0 2px 8px rgba(42, 157, 143, 0.15)]"
                         style={{
@@ -193,19 +193,21 @@ export function Donations() {
                         <h3 className="text-xl md:text-2xl font-bold text-[var(--text-heading)] mb-2">
                           {project.title}
                         </h3>
-                        <p className="text-[var(--text-muted)] text-[var(--text-body)] leading-relaxed mb-5 flex-1">
+                        <p className="text-[var(--text-muted)] text-[var(--text-body)] leading-relaxed mb-6 flex-1">
                           {project.description}
                         </p>
-                        <a
-                          href={DONATE_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary font-semibold text-[15px] sm:text-sm hover:gap-3 transition-[gap] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md py-2.5 px-1 -mb-1 mt-4 sm:mt-auto relative z-10 touch-manipulation min-h-[44px] w-full sm:w-auto"
-                          style={{ WebkitTapHighlightColor: 'transparent' }}
-                        >
-                          Подробнее на mechet-ramazan.ru
-                          <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2} />
-                        </a>
+                        <div className="mt-auto pt-2">
+                          <a
+                            href={DONATE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-primary font-semibold text-[15px] sm:text-sm hover:gap-3 transition-[gap] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md py-2.5 px-1 relative z-10 touch-manipulation min-h-[44px] w-full sm:w-auto flex-shrink-0"
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
+                          >
+                            Подробнее на mechet-ramazan.ru
+                            <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2} />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
